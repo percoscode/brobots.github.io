@@ -25,7 +25,6 @@ class App extends Component {
             <div className='tc'>
                 <h1>Brobots!</h1>
                 <SearchBox searchChange={this.onSearchChange}/>
-                {console.log(filteredRobots)}
                 <CardList robots={filteredRobots}/>
             </div>
         )
