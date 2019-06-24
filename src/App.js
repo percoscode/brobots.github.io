@@ -11,21 +11,34 @@ class App extends Component {
             searchField: ''
         }
     }
+
     onSearchChange = (event) => {
-        const filteredRobots = this.state.robots.filter(robots => {
-            return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
-        })
-        console.log(filteredRobots);
+        this.setState({searchField: event.target.value})
     }
+
     render() {
+        const filteredRobots = this.state.robots.filter(robots => {
+            return robots.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+        })
+        // console.log(filteredRobots);
         return (
             <div className='tc'>
                 <h1>Brobots!</h1>
                 <SearchBox searchChange={this.onSearchChange}/>
-                <CardList robots={this.state.robots}/>
+                {console.log(filteredRobots)}
+                <CardList robots={filteredRobots}/>
             </div>
         )
     }
 }
 
 export default App 
+
+// Make sure you spell your identifiers exactly correctly. 
+// They are case-sensitive (hint hint).
+
+//TypeError: Cannot read property 'toLowerCase' of undefined
+
+//I know it seems related to connecting the front end to the 
+//back end, but that error message is saying that your form is 
+//not connected to the html document. How are you defining the form?
